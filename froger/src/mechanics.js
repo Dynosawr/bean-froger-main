@@ -12,7 +12,11 @@ export function patrol(speed = 60, dir = 1) {
       this.move(speed * dir, 0)
     },
     add(){
-      this.dir = (-1) ** get("platform").length
+      this.on("collide", (obj, col) => {
+				if (col.isLeft() || col.isRight()) {
+					dir = -dir
+				}
+      })
     }
   }
 }
