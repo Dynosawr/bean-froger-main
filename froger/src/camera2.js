@@ -50,7 +50,7 @@ export default function moveCamera(target, level) {
     //   pos: vec2(0, 20),
     //   color: YELLOW,
     //   outline: { color: BLACK, width: 4 },
-  })
+  // })
 
     lerpTargetPos.y = target.pos.y;
 
