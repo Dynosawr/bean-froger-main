@@ -9,7 +9,7 @@ export default function moveCamera(target, level) {
 
   target.onUpdate(() => {
     let halfScreenHeight = height() / 2;
-    let halfScreenWidth = width() / 2;
+    let halfScreenWidth = width() / 2+level.tileWidth();
 
     if (level.levelWidth() > halfScreenWidth) {
       if (target.pos.x !== lastTargetPos.x && !isCollidingWall(target) && level.levelWidth() > halfScreenWidth) {
@@ -27,6 +27,30 @@ export default function moveCamera(target, level) {
       lerpTargetPos.x = level.levelWidth() / 2;
       lerpTime = 1;
     }
+    /// DEBUGGING
+    // debug.log(level.levelWidth() / 2 +","+ (level.levelWidth() > halfScreenWidth).toString())
+    // drawRect({
+    //   width: level.levelWidth(),
+    //   height: 240,
+    //   pos: vec2(-level.tileWidth() / 2, 20),
+    //   color: RED,
+    //   outline: { color: BLACK, width: 4 },
+    // })
+    // drawRect({
+    //   width: width()/2,
+    //   height: 240,
+    //   pos: vec2(0, 20),
+    //   color: BLUE,
+    //   fill: false,
+    //   outline: { color: BLACK, width: 4 },
+    // })
+    // drawRect({
+    //   width: level.levelWidth()/2,
+    //   height: 240,
+    //   pos: vec2(0, 20),
+    //   color: YELLOW,
+    //   outline: { color: BLACK, width: 4 },
+  // })
 
     lerpTargetPos.y = target.pos.y;
 
