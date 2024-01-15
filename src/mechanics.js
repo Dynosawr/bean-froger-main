@@ -10,12 +10,14 @@ export function patrol(speed = 60, dir = 1) {
         dir = -dir
       }
       this.move(speed * dir, 0)
+      debug.log(countGrass())
     },
-    add(){
+    add() {
+      dir = (-1)**countGrass()
       this.on("collide", (obj, col) => {
-				if (col.isLeft() || col.isRight()) {
-					dir = -dir
-				}
+        if (col.isLeft() || col.isRight()) {
+          dir = -dir
+        }
       })
     }
   }
@@ -51,6 +53,10 @@ export function generateLevel(levelWidth) {
       ],
     }
   });
+}
+
+function countGrass() {
+  return get("platform", { recursive: true }).length
 }
 
 // A custom component for handling drag & drop behavior
