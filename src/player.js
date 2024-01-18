@@ -29,7 +29,7 @@ export default function playerComp() {
       add() {
         // Jump through platforms
         this.onBeforePhysicsResolve((collision) => {
-          if (["platform", "soft"].some(tag => collision.target.is(tag)) && this.isJumping() || collision.isTop()) {
+          if (["platform", "soft"].some(tag => collision.target.is(tag)) && (this.isJumping() || collision.isTop())) {
             collision.preventResolution()
           }
         })
